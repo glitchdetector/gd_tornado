@@ -1,5 +1,5 @@
 # gd_tornado
-Lua-based Port of https://github.com/CamxxCore/TornadoScript for FiveM
+Lua-based Port of @CamxxCore's https://github.com/CamxxCore/TornadoScript for FiveM
 
  - Can be configured at runtime to move from A to B
  - Lifts vehicles and peds (can be configured)
