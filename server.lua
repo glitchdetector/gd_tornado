@@ -14,7 +14,7 @@ local PossiblePositions = {
     {x = 3705.4135742188, y = 4651.7333984375, z = 11.050972938538},
 }
 
-AddEventHandler("omni_tornado:summon", function()
+AddEventHandler("gd_tornado:summon", function()
     local start = PossiblePositions[math.random(#PossiblePositions)]
     local destination = PossiblePositions[math.random(#PossiblePositions)]
     while start.x == destination.y do
@@ -27,15 +27,15 @@ AddEventHandler("omni_tornado:summon", function()
     print("[Tornado] A tornado has spawned at " .. start.x .. ", " .. start.y .. ", " .. start.z)
 end)
 
-AddEventHandler("omni_tornado:dismiss", function()
+AddEventHandler("gd_tornado:dismiss", function()
     IsTornadoActive = false
     TriggerClientEvent("omni_tornado:delete", -1)
 end)
 
 RegisterCommand("tornado_summon", function()
-    TriggerEvent("omni_tornado:summon")
+    TriggerEvent("gd_tornado:summon")
 end, true)
 
 RegisterCommand("tornado_dismiss", function()
-    TriggerEvent("omni_tornado:dismiss")
+    TriggerEvent("gd_tornado:dismiss")
 end, true)
