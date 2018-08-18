@@ -23,13 +23,13 @@ AddEventHandler("gd_tornado:summon", function()
     TornadoPosition = start
     TornadoDestination = destination
     IsTornadoActive = true
-    TriggerClientEvent("omni_tornado:spawn", -1, start, destination)
+    TriggerClientEvent("gd_tornado:spawn", -1, start, destination)
     print("[Tornado] A tornado has spawned at " .. start.x .. ", " .. start.y .. ", " .. start.z)
 end)
 
 AddEventHandler("gd_tornado:dismiss", function()
     IsTornadoActive = false
-    TriggerClientEvent("omni_tornado:delete", -1)
+    TriggerClientEvent("gd_tornado:delete", -1)
 end)
 
 RegisterCommand("tornado_summon", function()
