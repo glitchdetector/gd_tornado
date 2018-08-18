@@ -197,10 +197,6 @@ function TornadoVortex:OnUpdate(gameTime)
             self._destination = GetRandomPositionFromCoords(self._position, 1.0)
         end
         self._position = MoveTowards(self._position, self._destination, VORTEX_MOVE_SPEED_SCALE * 0.287)
-        if exports.omni_common:isDebugging() then
-            exports.omni_common:DrawText3D("TORNADO", self._position.x, self._position.y, self._position.z, 20.0)
-            exports.omni_common:DrawText3D("DESTINATION", self._destination.x, self._destination.y, self._destination.z, 20.0)
-        end
     end
     local maxEntityDist = VORTEX_MAX_ENTITY_DIST
     if gameTime > self._nextUpdateTime then
