@@ -7,8 +7,8 @@ Citizen.CreateThread(function()
     local Tornado = nil
 
 
-    RegisterNetEvent("omni_tornado:spawn")
-    AddEventHandler("omni_tornado:spawn", function(pos, dest)
+    RegisterNetEvent("gd_tornado:spawn")
+    AddEventHandler("gd_tornado:spawn", function(pos, dest)
         pos = vec3(pos.x, pos.y, pos.z)
         dest = vec3(dest.x, dest.y, dest.z)
         Tornado = Script._factory:CreateVortex(pos)
@@ -17,22 +17,22 @@ Citizen.CreateThread(function()
         IsTornadoActive = true
     end)
 
-    RegisterNetEvent("omni_tornado:setPosition")
-    AddEventHandler("omni_tornado:setPosition", function(pos)
+    RegisterNetEvent("gd_tornado:setPosition")
+    AddEventHandler("gd_tornado:setPosition", function(pos)
         pos = vec3(pos.x, pos.y, pos.z)
         Tornado = Script._factory:CreateVortex(pos)
         Tornado._position = pos
     end)
 
-    RegisterNetEvent("omni_tornado:setDestination")
-    AddEventHandler("omni_tornado:setDestination", function(dest)
+    RegisterNetEvent("gd_tornado:setDestination")
+    AddEventHandler("gd_tornado:setDestination", function(dest)
         dest = vec3(dest.x, dest.y, dest.z)
         Tornado = Script._factory:CreateVortex(dest)
         Tornado._destination = dest
     end)
 
-    RegisterNetEvent("omni_tornado:delete")
-    AddEventHandler("omni_tornado:delete", function()
+    RegisterNetEvent("gd_tornado:delete")
+    AddEventHandler("gd_tornado:delete", function()
         IsTornadoActive = false
     end)
 
