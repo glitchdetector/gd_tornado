@@ -15,16 +15,45 @@ local PossiblePositions = {
 }
 
 AddEventHandler("gd_tornado:summon", function()
-    local start = PossiblePositions[math.random(#PossiblePositions)]
-    local destination = PossiblePositions[math.random(#PossiblePositions)]
-    while start.x == destination.y do
-        destination = PossiblePositions[math.random(#PossiblePositions)]
+    local start = math.random(#PossiblePositions)
+    local destination = math.random(#PossiblePositions-1)
+    if start==destination then
+        destination = #PossiblePositions
     end
+    start = PossiblePositions[start]
+    destination = PossiblePositions[destination]
     TornadoPosition = start
     TornadoDestination = destination
     IsTornadoActive = true
     TriggerClientEvent("gd_tornado:spawn", -1, start, destination)
     print("[Tornado] A tornado has spawned at " .. start.x .. ", " .. start.y .. ", " .. start.z)
+end)
+
+AddEventHandler("gd_tornado:move_here", function(x,y,z)
+    x,y,z=tonumber(x),tonumber(y),tonumber(z)
+    if x~=nil and y~=nil and z~=nil then
+        TornadoDestination = {x=x,y=y,z=z}
+        if not IsTornadoActive then
+            TornadoPosition = PossiblePositions[math.random(#PossiblePositions)]
+            print("[Tornado] A tornado has spawned at " .. TornadoPosition.x .. ", " .. TornadoPosition.y .. ", " .. TornadoPosition.z)
+        end
+        IsTornadoActive = true
+        TriggerClientEvent("gd_tornado:spawn", -1, TornadoPosition, TornadoDestination)
+        print("[Tornado] A tornado is moving to " .. x .. ", " .. y .. ", " .. z)
+    end
+end)
+
+AddEventHandler("gd_tornado:summon_right_here", function(x,y,z)
+    x,y,z=tonumber(x),tonumber(y),tonumber(z)
+    if x~=nil and y~=nil and z~=nil then
+        TornadoPosition = {x=x,y=y,z=z}
+        if not IsTornadoActive then
+            TornadoDestination = PossiblePositions[math.random(#PossiblePositions)]
+        end
+        IsTornadoActive = true
+        TriggerClientEvent("gd_tornado:spawn", -1, TornadoPosition, TornadoDestination)
+        print("[Tornado] A tornado has spawned at " .. x .. ", " .. y .. ", " .. z)
+    end
 end)
 
 AddEventHandler("gd_tornado:dismiss", function()
